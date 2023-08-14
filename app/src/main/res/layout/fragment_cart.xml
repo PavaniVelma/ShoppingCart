@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#4F97D1"
+    android:background="@color/blue"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".view.introscreen.CartFragment">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="100dp"
-        android:padding="50dp"
+        android:layout_marginStart="@dimen/_30dp"
+        android:layout_marginTop="@dimen/_50dp"
+        android:layout_marginEnd="@dimen/_30dp"
+        android:layout_marginBottom="@dimen/_100dp"
+        android:padding="@dimen/_50dp"
         app:cardBackgroundColor="@color/white"
-        app:cardCornerRadius="25dp">
+        app:cardCornerRadius="@dimen/_25dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -25,10 +25,10 @@
 
 
             <androidx.appcompat.widget.AppCompatImageView
-                android:layout_width="250dp"
-                android:layout_height="250dp"
-                android:layout_marginTop="20dp"
-                android:src="@drawable/getorder"
+                android:layout_width="@dimen/_250dp"
+                android:layout_height="@dimen/_250dp"
+                android:layout_marginTop="@dimen/_20dp"
+                android:src="@drawable/get_order"
                 android:layout_gravity="center"/>
 
 
@@ -36,12 +36,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_margin="20dp"
+                android:layout_margin="@dimen/_20dp"
                 android:fontFamily="sans-serif-black"
                 android:gravity="center"
-                android:text="GET YOUR ORDER"
+                android:text="@string/get_your_order"
                 android:textColor="@color/black"
-                android:textSize="25sp" />
+                android:textSize="@dimen/_25dp" />
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_getStarted"
+                android:layout_marginTop="@dimen/_100dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_bg"
+                android:text="GET STARTED"
+                style="@style/PrimaryButton"
+                android:textAlignment="center"
+                android:layout_gravity="center_horizontal"/>
 
 
 
@@ -50,4 +62,4 @@
 
     </androidx.cardview.widget.CardView>
 
-</FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

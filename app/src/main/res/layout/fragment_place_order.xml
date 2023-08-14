@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#4F97D1"
+    android:background="@color/blue"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".view.introscreen.PlaceOrderFragment">
 
@@ -11,13 +11,13 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="100dp"
-        android:padding="50dp"
+        android:layout_marginStart="@dimen/_30dp"
+        android:layout_marginTop="@dimen/_50dp"
+        android:layout_marginEnd="@dimen/_30dp"
+        android:layout_marginBottom="@dimen/_100dp"
+        android:padding="@dimen/_50dp"
         app:cardBackgroundColor="@color/white"
-        app:cardCornerRadius="25dp">
+        app:cardCornerRadius="@dimen/_25dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -26,25 +26,23 @@
 
 
             <androidx.appcompat.widget.AppCompatImageView
-                android:layout_width="250dp"
-                android:layout_height="250dp"
-                android:layout_marginTop="20dp"
-                android:src="@drawable/purchase_online"
-                android:layout_gravity="center"/>
+                android:layout_width="@dimen/_250dp"
+                android:layout_height="@dimen/_250dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/_20dp"
+                android:src="@drawable/purchase_online" />
 
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_margin="20dp"
+                android:layout_margin="@dimen/_20dp"
                 android:fontFamily="sans-serif-black"
                 android:gravity="center"
-                android:text="PURCHASE ONLINE"
+                android:text="@string/purchase_online"
                 android:textColor="@color/black"
-                android:textSize="25sp" />
-
-
+                android:textSize="@dimen/_25dp" />
 
 
         </LinearLayout>

@@ -1,29 +1,39 @@
 package com.apolisb42.shoppingcart.view.introscreen
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.viewpager2.widget.ViewPager2
-import com.apolisb42.shoppingcart.databinding.ActivityIntroScreenBinding
+import com.apolisb42.shoppingcart.R
+import com.apolisb42.shoppingcart.databinding.FragmentIntroScreenBinding
 import com.apolisb42.shoppingcart.databinding.ItemDotBinding
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 
-class IntroScreenActivity : AppCompatActivity() {
-    private lateinit var binding:ActivityIntroScreenBinding
-    private lateinit var viewPageAdapter: ViewPageAdapter
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+class IntroScreenFragment : Fragment() {
 
-        binding = ActivityIntroScreenBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+    private lateinit var binding:FragmentIntroScreenBinding
+    private lateinit var viewPageAdapter: ViewPageAdapter
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        // Inflate the layout for this fragment
+        binding = FragmentIntroScreenBinding.inflate(inflater,container,false )
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        activity?.actionBar?.setDisplayShowHomeEnabled(false)
         initViews()
     }
 
     private fun initViews(){
         val fragments = listOf<Fragment>(PlaceOrderFragment(), ProductFragment(), CartFragment())
-        viewPageAdapter = ViewPageAdapter(fragments, this@IntroScreenActivity)
+        viewPageAdapter = ViewPageAdapter(fragments, requireActivity())
 
         with(binding){
             viewPager2.adapter = viewPageAdapter
@@ -61,5 +71,3 @@ class IntroScreenActivity : AppCompatActivity() {
         }
     }
 }
-
-

@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#4F97D1"
+    android:background="@color/blue"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".view.introscreen.ProductFragment">
 
@@ -25,10 +25,10 @@
 
 
             <androidx.appcompat.widget.AppCompatImageView
-                android:layout_width="250dp"
-                android:layout_height="250dp"
-                android:layout_marginTop="20dp"
-                android:src="@drawable/trackorder"
+                android:layout_width="@dimen/_250dp"
+                android:layout_height="@dimen/_250dp"
+                android:layout_marginTop="@dimen/_20dp"
+                android:src="@drawable/track_order"
                 android:layout_gravity="center"/>
 
 
@@ -36,12 +36,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_margin="20dp"
+                android:layout_margin="@dimen/_20dp"
                 android:fontFamily="sans-serif-black"
                 android:gravity="center"
-                android:text="TRACK YOUR ORDER"
+                android:text="@string/track_your_order"
                 android:textColor="@color/black"
-                android:textSize="25sp" />
+                android:textSize="@dimen/_25dp" />
 
 
 
