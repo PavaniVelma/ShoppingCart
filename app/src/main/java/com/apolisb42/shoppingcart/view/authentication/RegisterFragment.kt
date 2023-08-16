@@ -10,12 +10,17 @@ import com.apolisb42.shoppingcart.model.util.UserProfile
 import com.apolisb42.shoppingcart.model.network.VolleyHandler
 import com.apolisb42.shoppingcart.presenter.MVPShoppingCart
 import com.apolisb42.shoppingcart.presenter.authentication.RegisterPresenter
+import com.apolisb42.shoppingcart.view.ShoppingCartActivity
 import com.google.android.material.snackbar.Snackbar
 
 
 class RegisterFragment : Fragment() {
     private lateinit var binding:FragmentRegisterBinding
     private lateinit var presenter:RegisterPresenter
+
+    companion object{
+        const val TAG = "REGISTER"
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -62,6 +67,10 @@ class RegisterFragment : Fragment() {
             activity?.supportFragmentManager?.popBackStack()
         }
 
+    }
+    override fun onResume() {
+        super.onResume()
+        (activity as? ShoppingCartActivity)?.onChangeToolbarTitle("REGISTER")
     }
 
 

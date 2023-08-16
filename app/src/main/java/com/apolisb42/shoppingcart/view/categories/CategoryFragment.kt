@@ -14,6 +14,7 @@ import com.apolisb42.shoppingcart.model.network.VolleyHandler
 import com.apolisb42.shoppingcart.presenter.MVPShoppingCart
 import com.apolisb42.shoppingcart.presenter.authentication.CategoryPresenter
 import com.apolisb42.shoppingcart.presenter.authentication.SubCategoryPresenter
+import com.apolisb42.shoppingcart.view.ShoppingCartActivity
 import com.apolisb42.shoppingcart.view.subcategories.SubCategoryFragment
 import com.google.android.material.snackbar.Snackbar
 
@@ -22,6 +23,10 @@ class CategoryFragment : Fragment(),ItemClickListener {
     private lateinit var binding:FragmentCategoryBinding
     private lateinit var categoryPresenter:CategoryPresenter
     private lateinit var subCategoryFragment: SubCategoryFragment
+
+    companion object{
+        const val TAG = "SUPER CART"
+    }
 
 
     override fun onCreateView(
@@ -37,6 +42,8 @@ class CategoryFragment : Fragment(),ItemClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         super.onViewCreated(view, savedInstanceState)
+        (activity as? ShoppingCartActivity)?.supportActionBar?.show()
+        (activity as? ShoppingCartActivity)?.showNavDrawer()
          categoryPresenter = CategoryPresenter(VolleyHandler(requireContext()),object:MVPShoppingCart.CategoryView{
             override fun setError() {
                 Snackbar.make(binding.root,"categories not found",Snackbar.LENGTH_LONG)
@@ -58,12 +65,12 @@ class CategoryFragment : Fragment(),ItemClickListener {
         bundle.putString("id",id)
         subCategoryFragment = SubCategoryFragment()
         subCategoryFragment.arguments = bundle
-        activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.fragment_container,subCategoryFragment)?.commit()
+        activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.fragment_container,subCategoryFragment)?.
+        addToBackStack(null)?.commit()
     }
-
-
-
-
-
+    override fun onResume() {
+        super.onResume()
+        (activity as? ShoppingCartActivity)?.onChangeToolbarTitle("SUPER CART")
+    }
 
 }

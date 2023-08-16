@@ -9,8 +9,4 @@ interface ResponseCallback {
     fun success(response:Any?)
     fun failure()
 
-
-
-
-
 }

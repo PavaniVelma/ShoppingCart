@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("com.google.devtools.ksp") version "1.8.10-1.0.9"
 }
 
 android {
@@ -37,6 +38,12 @@ android {
         viewBinding = true
     }
 }
+kotlin {
+    jvmToolchain(8)
+}
+
+
+
 
 dependencies {
 
@@ -52,4 +59,9 @@ dependencies {
     implementation("com.android.volley:volley:1.2.1")
     implementation("com.squareup.picasso:picasso:2.71828")
     implementation("com.google.code.gson:gson:2.10.1")
+
+    //Room Dependency
+    implementation("androidx.room:room-runtime:2.5.2")
+    ksp("androidx.room:room-compiler:2.5.2")
+
 }

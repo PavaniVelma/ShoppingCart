@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.apolisb42.shoppingcart.R
 import com.apolisb42.shoppingcart.databinding.FragmentCartBinding
+import com.apolisb42.shoppingcart.model.util.putBooleanInSharedPreferences
 import com.apolisb42.shoppingcart.view.authentication.LoginFragment
 
 
@@ -33,8 +34,12 @@ class CartFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.btnGetStarted.setOnClickListener {
+
+            activity?.putBooleanInSharedPreferences("firstTime",true)
+
             activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.fragment_container,
                 LoginFragment()
+
             )?.commit()
         }
     }
