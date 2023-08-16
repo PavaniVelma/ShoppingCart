@@ -72,7 +72,7 @@ interface MVPShoppingCart {
 
     interface ICartPresenter{
 
-        fun getCartItems()
+        fun getCartItems(): List<CartItem>
     }
 
 

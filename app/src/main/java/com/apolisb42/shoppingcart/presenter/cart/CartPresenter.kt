@@ -7,7 +7,5 @@ import com.apolisb42.shoppingcart.presenter.MVPShoppingCart
 class CartPresenter(private val cartDao: CartDao):MVPShoppingCart.ICartPresenter {
 
 
-    override fun getCartItems() {
-        cartDao.fetchProduct()
-    }
+    override fun getCartItems() = cartDao.fetchProduct()
 }

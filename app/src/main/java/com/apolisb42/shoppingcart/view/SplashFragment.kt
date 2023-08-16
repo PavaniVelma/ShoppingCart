@@ -15,6 +15,7 @@ import com.apolisb42.shoppingcart.model.util.putBooleanInSharedPreferences
 import com.apolisb42.shoppingcart.model.util.putStringInSharedPreference
 import com.apolisb42.shoppingcart.view.authentication.LoginFragment
 import com.apolisb42.shoppingcart.view.categories.CategoryFragment
+import com.apolisb42.shoppingcart.view.checkout.CartItemsFragment
 import com.apolisb42.shoppingcart.view.introscreen.IntroScreenFragment
 
 class SplashFragment : Fragment() {
@@ -45,7 +46,7 @@ class SplashFragment : Fragment() {
 
             if(activity?.getBooleanInSharedPreferences(key = "firstTime", value = false) == true){
                 if (activity?.getStringFromSharedPreferences("email")?.isNotEmpty() == true)
-                    activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.fragment_container, CategoryFragment())?.commit()
+                    activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.fragment_container, CartItemsFragment())?.commit()
                 else
                     activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.fragment_container, LoginFragment())?.commit()
 
