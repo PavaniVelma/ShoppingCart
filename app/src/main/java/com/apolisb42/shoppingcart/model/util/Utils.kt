@@ -16,3 +16,11 @@ fun Context.putStringInSharedPreference(key:String, value:String){
 fun Context.getStringFromSharedPreferences(key:String):String{
     return  getSharedPreference().getString(key, "") ?: ""
 }
+
+fun Context.putBooleanInSharedPreferences(key:String,value:Boolean){
+    getSharedPreference().edit().putBoolean(key, value).apply()
+}
+
+fun Context.getBooleanInSharedPreferences(key:String,value:Boolean):Boolean{
+    return getSharedPreference().getBoolean(key,value)
+}

@@ -14,6 +14,7 @@ import com.apolisb42.shoppingcart.model.productslist.ProductListResponse
 import com.apolisb42.shoppingcart.presenter.MVPShoppingCart
 import com.apolisb42.shoppingcart.presenter.productslist.ProductsListPresenter
 import com.apolisb42.shoppingcart.view.ProductDetails.ProductDetailsFragment
+import com.apolisb42.shoppingcart.view.ShoppingCartActivity
 import com.apolisb42.shoppingcart.view.categories.ItemClickListener
 
 
@@ -44,6 +45,7 @@ class ProductListFragment : Fragment(), ItemClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        (activity as? ShoppingCartActivity)?.showBackButton()
         productsListPresenter = ProductsListPresenter(VolleyHandler(requireContext()),object:MVPShoppingCart.ProductView{
             override fun setError() {
 
@@ -70,7 +72,15 @@ class ProductListFragment : Fragment(), ItemClickListener {
         val bundle = Bundle()
         bundle.putString("productId",id)
         productDetailsFragment.arguments = bundle
-        activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.fragment_container,productDetailsFragment)?.commit()
+        activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.fragment_container,productDetailsFragment)?.addToBackStack(null)?.commit()
     }
+
+
+    override fun onResume() {
+        super.onResume()
+        (activity as? ShoppingCartActivity)?.onChangeToolbarTitle("SMART PHONES")
+    }
+
+
 
 }

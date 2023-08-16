@@ -1,5 +1,6 @@
 package com.apolisb42.shoppingcart.presenter
 
+import com.apolisb42.shoppingcart.model.cart.CartItem
 import com.apolisb42.shoppingcart.model.util.UserProfile
 import com.apolisb42.shoppingcart.model.categories.CategoriesResponse
 import com.apolisb42.shoppingcart.model.productdetailsmodel.ProductDescriptionResponse
@@ -56,11 +57,23 @@ interface MVPShoppingCart {
     interface IProductDetailsPresenter{
 
         fun getProductDetails(productId:String)
+
+        fun addToCart(cartItem: CartItem)
+
+        fun deleteItemInCart(cartItem: CartItem)
+
+        fun getProductWithId(productId: String): CartItem?
     }
 
     interface ProductDetailsView{
         fun setError()
         fun setSuccess(productDescriptionResponse: ProductDescriptionResponse)
     }
+
+    interface ICartPresenter{
+
+        fun getCartItems(): List<CartItem>
+    }
+
 
 }

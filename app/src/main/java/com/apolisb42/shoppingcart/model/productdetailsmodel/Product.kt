@@ -1,5 +1,6 @@
 package com.apolisb42.shoppingcart.model.productdetailsmodel
 
+
 data class Product(
     val average_rating: String,
     val category_id: String,
@@ -10,7 +11,7 @@ data class Product(
     val product_id: String,
     val product_image_url: String,
     val product_name: String,
-    val reviews: List<Any>,
+    val reviews: List<Review>,
     val specifications: List<Specification>,
     val sub_category_id: String
 )

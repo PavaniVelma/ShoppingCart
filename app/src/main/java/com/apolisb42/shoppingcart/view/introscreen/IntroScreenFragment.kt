@@ -9,6 +9,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.apolisb42.shoppingcart.R
 import com.apolisb42.shoppingcart.databinding.FragmentIntroScreenBinding
 import com.apolisb42.shoppingcart.databinding.ItemDotBinding
+import com.apolisb42.shoppingcart.view.ShoppingCartActivity
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 
@@ -28,6 +29,7 @@ class IntroScreenFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         activity?.actionBar?.setDisplayShowHomeEnabled(false)
+        (activity as? ShoppingCartActivity)?.supportActionBar?.show()
         initViews()
     }
 

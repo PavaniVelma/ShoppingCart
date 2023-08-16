@@ -11,6 +11,7 @@ import com.apolisb42.shoppingcart.model.network.VolleyHandler
 import com.apolisb42.shoppingcart.model.subcategories.SubcategoryResponse
 import com.apolisb42.shoppingcart.presenter.MVPShoppingCart
 import com.apolisb42.shoppingcart.presenter.authentication.SubCategoryPresenter
+import com.apolisb42.shoppingcart.view.ShoppingCartActivity
 import com.apolisb42.shoppingcart.view.products.ProductListFragment
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayoutMediator
@@ -21,6 +22,10 @@ class SubCategoryFragment : Fragment() {
     private lateinit var presenter: SubCategoryPresenter
     private lateinit var subCategoryViewPageAdapter: SubCategoryViewPageAdapter
     private var id : String? = null
+
+    companion object{
+        const val TAG = "SMART PHONES"
+    }
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,7 +46,7 @@ class SubCategoryFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        (activity as? ShoppingCartActivity)?.showBackButton()
         presenter = SubCategoryPresenter(VolleyHandler(requireContext()),object:MVPShoppingCart.SubCategoryView{
             override fun setError() {
                 Snackbar.make(binding.root,"Something went wrong",Snackbar.LENGTH_LONG).show()

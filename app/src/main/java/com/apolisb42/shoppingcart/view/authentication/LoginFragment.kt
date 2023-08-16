@@ -9,8 +9,10 @@ import com.apolisb42.shoppingcart.R
 import com.apolisb42.shoppingcart.databinding.FragmentLoginBinding
 import com.apolisb42.shoppingcart.model.network.VolleyHandler
 import com.apolisb42.shoppingcart.model.util.PreferencesHandler
+import com.apolisb42.shoppingcart.model.util.putStringInSharedPreference
 import com.apolisb42.shoppingcart.presenter.MVPShoppingCart
 import com.apolisb42.shoppingcart.presenter.authentication.LoginPresenter
+import com.apolisb42.shoppingcart.view.ShoppingCartActivity
 import com.apolisb42.shoppingcart.view.categories.CategoryFragment
 
 
@@ -18,6 +20,10 @@ class LoginFragment : Fragment() {
 
     private lateinit var binding:FragmentLoginBinding
     private lateinit var loginPresenter: LoginPresenter
+
+    companion object{
+        const val TAG = "LOGIN"
+    }
 
 
 
@@ -37,7 +43,10 @@ class LoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        activity?.actionBar?.setDisplayShowHomeEnabled(false)
+        (activity as? ShoppingCartActivity)?.hideNavDrawer()
+        (activity as? ShoppingCartActivity)?.supportActionBar?.show()
+
+
         loginPresenter = LoginPresenter(VolleyHandler(requireContext()), object:MVPShoppingCart.LoginView{
             override fun setError() {
 
@@ -45,7 +54,8 @@ class LoginFragment : Fragment() {
             }
 
             override fun setSuccess() {
-
+                activity?.putStringInSharedPreference("email",binding.etEmail.text.toString())
+                activity?.putStringInSharedPreference("password", binding.etPassword.text.toString())
                 activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.fragment_container,CategoryFragment())?.commit()
             }
         })
@@ -66,6 +76,13 @@ class LoginFragment : Fragment() {
         }
 
     }
+
+    override fun onResume() {
+        super.onResume()
+        (activity as? ShoppingCartActivity)?.onChangeToolbarTitle("LOGIN")
+    }
+
+
 
 
 }
