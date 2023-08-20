@@ -1,14 +1,13 @@
 package com.apolisb42.shoppingcart.view.products
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.apolisb42.shoppingcart.R
 import com.apolisb42.shoppingcart.databinding.FragmentProductListBinding
-import com.apolisb42.shoppingcart.model.categories.CategoriesResponse
 import com.apolisb42.shoppingcart.model.network.VolleyHandler
 import com.apolisb42.shoppingcart.model.productslist.ProductListResponse
 import com.apolisb42.shoppingcart.presenter.MVPShoppingCart
@@ -36,7 +35,7 @@ class ProductListFragment : Fragment(), ItemClickListener {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         binding = FragmentProductListBinding.inflate(layoutInflater,container, false)
         return binding.root
@@ -46,7 +45,7 @@ class ProductListFragment : Fragment(), ItemClickListener {
         super.onViewCreated(view, savedInstanceState)
 
         (activity as? ShoppingCartActivity)?.showBackButton()
-        productsListPresenter = ProductsListPresenter(VolleyHandler(requireContext()),object:MVPShoppingCart.ProductView{
+        productsListPresenter = ProductsListPresenter(VolleyHandler.getInstance(requireContext()),object:MVPShoppingCart.ProductView{
             override fun setError() {
 
             }
