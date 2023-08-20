@@ -1,23 +1,24 @@
 package com.apolisb42.shoppingcart.view.checkout
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.apolisb42.shoppingcart.databinding.ItemCheckoutCartBinding
 import com.apolisb42.shoppingcart.model.cart.CartItem
 import com.apolisb42.shoppingcart.model.network.VolleyConstants
-
 import com.squareup.picasso.Picasso
 
-class CartItemsAdapter(private val cartList:List<CartItem>): RecyclerView.Adapter<CartItemsAdapter.CartItemViewHolder>() {
+class CartItemsAdapter(private val cartList: List<CartItem>): RecyclerView.Adapter<CartItemsAdapter.CartItemViewHolder>() {
 
     inner class CartItemViewHolder(val binding: ItemCheckoutCartBinding) :
         RecyclerView.ViewHolder(binding.root) {
+        @SuppressLint("SetTextI18n")
         fun bind(cartItem: CartItem) {
             with(binding) {
                 productName.text = cartItem.product_name
                 productPrice.text = "$ ${cartItem.price}"
-                productUnitPrice.text = cartItem.price
+                productUnitPrice.text = "$ ${cartItem.unitPrice}"
                 productQuantity.text = cartItem.quantity.toString()
                 val url = "${VolleyConstants.IMAGE_URL}${cartItem.product_image_url}"
                 Picasso.get().load(url).into(imagePhone)

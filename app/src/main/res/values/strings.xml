@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">ShoppingCart</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -39,4 +39,51 @@
     <string name="Pavani">Pavani</string>
     <string name="super_cart">SuperCart</string>
     <string name="remember_me">Remember me \t</string>
+    <string name="select_delivery_address">Select delivery address</string>
+    <string name="add_new_address">Add New Address</string>
+    <string name="internet_banking">Internet Banking</string>
+    <string name="search">search</string>
+    <string name="tab">tab</string>
+    <string name="address_title">Address Title</string>
+    <string name="enter_address_title">enter address title</string>
+    <string name="address">Address</string>
+    <string name="cancel" tools:ignore="ButtonCase">CANCEL</string>
+    <string name="save">SAVE</string>
+    <string name="get_started">GET STARTED</string>
+    <string name="total_bill_amount">Total Bill Amount</string>
+    <string name="checkout">CHECKOUT</string>
+    <string name="_640">$ 640</string>
+    <string name="next">NEXT</string>
+    <string name="add_address">ADD ADDRESS</string>
+    <string name="order_id">Order ID</string>
+    <string name="_3246">#3246</string>
+    <string name="order_status">Order Status</string>
+    <string name="confirmed">Confirmed</string>
+    <string name="purchase_items">Purchase Items</string>
+    <string name="delivery_address">Delivery Address</string>
+    <string name="virginia_herndon">virginia herndon</string>
+    <string name="payment_option">Payment Option</string>
+    <string name="cancel_order">CANCEL ORDER</string>
+    <string name="select_payment_option">Select Payment Option</string>
+    <string name="tcash_on_delivery">\tCash On Delivery</string>
+    <string name="tinternet_banking">\tInternet Banking</string>
+    <string name="tdebit_card_credit_card">\tDebit Card/Credit Card</string>
+    <string name="tpay_pal">\tPay Pal</string>
+    <string name="username">username</string>
+    <string name="email">email</string>
+    <string name="cart_items">Cart Items</string>
+    <string name="confirm_and_place_order">CONFIRM AND PLACE ORDER</string>
+    <string name="_450">450</string>
+    <string name="unit_price">unit price</string>
+    <string name="quantity">quantity</string>
+    <string name="amount">Amount</string>
+    <string name="_1">1</string>
+    <string name="_100">100</string>
+    <string name="cod">COD</string>
+    <string name="date">date</string>
+    <string name="night_theme">Night theme</string>
+    <string name="light_theme">Light Theme</string>
+    <string name="delivery">Delivery</string>
+    <string name="payment">Payment</string>
+    <string name="summary">Summary</string>
 </resources>

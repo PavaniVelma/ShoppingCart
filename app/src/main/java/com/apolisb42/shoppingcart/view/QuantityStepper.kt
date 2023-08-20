@@ -4,7 +4,6 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.constraintlayout.widget.ConstraintLayout
-import com.apolisb42.shoppingcart.R
 import com.apolisb42.shoppingcart.databinding.QuantityStepperBinding
 
 interface QuantityStepperListener{
@@ -21,11 +20,14 @@ class QuantityStepper(context: Context, attrs: AttributeSet):ConstraintLayout(co
         binding = QuantityStepperBinding.inflate(LayoutInflater.from(getContext()), this)
         with(binding){
             imgAdd.setOnClickListener {
-                tvQuantity.text = (++quantity).toString()
+                quantity++
+                tvQuantity.text = (quantity).toString()
                 quantityStepperListener?.onQuantityChanged(quantity)
             }
             imgRemove.setOnClickListener {
-                if(--quantity == 0){
+                quantity--
+                if(quantity == 0){
+                    quantity = 1
                     tvQuantity.text = 1.toString()
                     quantityStepperListener?.onQuantityZero()
 
@@ -38,6 +40,7 @@ class QuantityStepper(context: Context, attrs: AttributeSet):ConstraintLayout(co
     }
 
     fun setQuantity(quantity: Int){
+        this.quantity = quantity
         binding. tvQuantity.text = quantity.toString()
     }
 

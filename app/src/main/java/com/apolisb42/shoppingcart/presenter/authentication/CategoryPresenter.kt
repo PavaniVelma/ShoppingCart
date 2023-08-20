@@ -3,8 +3,6 @@ package com.apolisb42.shoppingcart.presenter.authentication
 import com.apolisb42.shoppingcart.model.categories.CategoriesResponse
 import com.apolisb42.shoppingcart.model.network.ResponseCallback
 import com.apolisb42.shoppingcart.model.network.VolleyHandler
-import com.apolisb42.shoppingcart.model.productslist.ProductListResponse
-import com.apolisb42.shoppingcart.model.subcategories.SubcategoryResponse
 import com.apolisb42.shoppingcart.presenter.MVPShoppingCart
 
 class CategoryPresenter(private val volleyHandler: VolleyHandler, val categoryView: MVPShoppingCart.CategoryView)
@@ -24,5 +22,6 @@ class CategoryPresenter(private val volleyHandler: VolleyHandler, val categoryVi
 
         })
     }
+
 
 }
