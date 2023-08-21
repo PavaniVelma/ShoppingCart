@@ -1,5 +1,6 @@
 package com.apolisb42.shoppingcart.view.products
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.view.isVisible
@@ -16,6 +17,7 @@ class ProductsAdapter(private val products:List<Product>,val itemClickListener: 
 
     private val cartItems = ArrayList<CartItem>()
     inner class ProductViewHolder(val binding:ProductsItemBinding):ViewHolder(binding.root){
+        @SuppressLint("SetTextI18n")
         fun bind(product:Product){
             with(binding){
                 productName.text = product.product_name
@@ -40,6 +42,7 @@ class ProductsAdapter(private val products:List<Product>,val itemClickListener: 
         }
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun updateCartItems(cartItems: List<CartItem>){
         this.cartItems.clear()
         this.cartItems.addAll(cartItems)
