@@ -9,4 +9,7 @@ class SubCategoryViewPageAdapter(private val fragments:List<Fragment>, fragmentA
     override fun getItemCount() = fragments.size
 
     override fun createFragment(position: Int) = fragments[position]
+
+    override fun getItemId(position: Int) = position.toLong()
+    override fun getItemViewType(position: Int) = position
 }

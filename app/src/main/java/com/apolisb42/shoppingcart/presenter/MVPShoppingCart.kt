@@ -59,6 +59,8 @@ interface MVPShoppingCart {
     interface IProductListPresenter{
 
         fun getProducts(subCatId:String)
+
+        fun getCartItems(): List<CartItem>
     }
 
     interface ProductView{

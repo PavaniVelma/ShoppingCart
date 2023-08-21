@@ -1,13 +1,20 @@
 package com.apolisb42.shoppingcart.view.products
 
+import android.content.BroadcastReceiver
+import android.content.Context
+import android.content.Intent
+import android.content.IntentFilter
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.apolisb42.shoppingcart.R
 import com.apolisb42.shoppingcart.databinding.FragmentProductListBinding
+import com.apolisb42.shoppingcart.model.database.AppDatabase
+import com.apolisb42.shoppingcart.model.database.CartDao
 import com.apolisb42.shoppingcart.model.network.VolleyHandler
 import com.apolisb42.shoppingcart.model.productslist.ProductListResponse
 import com.apolisb42.shoppingcart.presenter.MVPShoppingCart
@@ -23,6 +30,9 @@ class ProductListFragment : Fragment(), ItemClickListener {
     private var subCategoryId: String? = null
     private lateinit var productsListPresenter: ProductsListPresenter
     private lateinit var productDetailsFragment: ProductDetailsFragment
+    private lateinit var adapter: ProductsAdapter
+    private lateinit var appDatabase: AppDatabase
+    private lateinit var cartDao: CartDao
 
 
 
@@ -43,17 +53,20 @@ class ProductListFragment : Fragment(), ItemClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initDb()
+        LocalBroadcastManager.getInstance(requireContext()).registerReceiver(listener, IntentFilter("Quantity_Update"))
 
         (activity as? ShoppingCartActivity)?.showBackButton()
-        productsListPresenter = ProductsListPresenter(VolleyHandler.getInstance(requireContext()),object:MVPShoppingCart.ProductView{
+        productsListPresenter = ProductsListPresenter(VolleyHandler.getInstance(requireContext()), cartDao,object:MVPShoppingCart.ProductView{
             override fun setError() {
 
             }
 
             override fun setSuccess(productListResponse: ProductListResponse) {
-                val adapter = ProductsAdapter(productListResponse.products,this@ProductListFragment)
+                adapter = ProductsAdapter(productListResponse.products,this@ProductListFragment)
                 binding.rvProducts.layoutManager = LinearLayoutManager(requireContext())
                 binding.rvProducts.adapter = adapter
+                adapter.updateCartItems(productsListPresenter.getCartItems())
             }
 
         })
@@ -61,9 +74,11 @@ class ProductListFragment : Fragment(), ItemClickListener {
         subCategoryId?.let{
             productsListPresenter.getProducts(it)
         }
+    }
 
-
-
+    private fun initDb(){
+        appDatabase = AppDatabase.getAppDatabase(requireContext())
+        cartDao = appDatabase.getCartDao()
     }
 
     override fun isSelected(id: String) {
@@ -74,12 +89,26 @@ class ProductListFragment : Fragment(), ItemClickListener {
         activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.fragment_container,productDetailsFragment)?.addToBackStack(null)?.commit()
     }
 
+    override fun onStop() {
+        super.onStop()
+        LocalBroadcastManager.getInstance(requireContext()).unregisterReceiver(listener)
+    }
 
     override fun onResume() {
         super.onResume()
         (activity as? ShoppingCartActivity)?.onChangeToolbarTitle("SMART PHONES")
     }
 
+
+    val listener = object: BroadcastReceiver(){
+        override fun onReceive(context: Context?, intent: Intent?) {
+            if(this@ProductListFragment::adapter.isInitialized
+                && this@ProductListFragment::productsListPresenter.isInitialized){
+                adapter.updateCartItems(productsListPresenter.getCartItems())
+            }
+        }
+
+    }
 
 
 }

@@ -1,12 +1,14 @@
 package com.apolisb42.shoppingcart.view.ProductDetails
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.apolisb42.shoppingcart.databinding.FragmentProductDetailsBinding
 import com.apolisb42.shoppingcart.model.cart.CartItem
@@ -47,6 +49,8 @@ class ProductDetailsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         (activity as? ShoppingCartActivity)?.showBackButton()
+        val localBroadcastManager = LocalBroadcastManager.getInstance(requireContext())
+        val intent = Intent("Quantity_Update")
         initDB()
         presenter = ProductDetailsPresenter(VolleyHandler.getInstance(requireContext()), cartDao,object:MVPShoppingCart.ProductDetailsView{
             override fun setError() {
@@ -81,6 +85,7 @@ class ProductDetailsFragment : Fragment() {
                 binding.quantityStepper.setQuantityStepperListener(object : QuantityStepperListener{
                     override fun onQuantityChanged(quantity: Int) {
                         with(productDescriptionResponse.product){
+                            localBroadcastManager.sendBroadcast(intent)
                             addToCart(this, quantity)
                         }
 
@@ -96,6 +101,7 @@ class ProductDetailsFragment : Fragment() {
                                 description = description
 
                             )
+                            localBroadcastManager.sendBroadcast(intent)
                             presenter.deleteItemInCart(cartItem)
                         }
                         binding.addToCart.isVisible = true
