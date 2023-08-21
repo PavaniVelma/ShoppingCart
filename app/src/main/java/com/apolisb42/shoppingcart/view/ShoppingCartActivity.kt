@@ -35,7 +35,6 @@ class ShoppingCartActivity : AppCompatActivity() {
         navToSplash()
         toggleTheme()
     }
-
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == android.R.id.home) {
             if(supportFragmentManager.fragments.last() !is CategoryFragment
@@ -55,12 +54,8 @@ class ShoppingCartActivity : AppCompatActivity() {
                 binding.drawerLayout.openDrawer(GravityCompat.START)
             }
         }
-
         return super.onOptionsItemSelected(item)
-
-
     }
-
     private fun initNavDrawer(){
         setSupportActionBar(binding.toolbar)
         supportActionBar?.let {
@@ -109,52 +104,40 @@ class ShoppingCartActivity : AppCompatActivity() {
             true
         }
     }
-
     fun addHeaderDetails(){
         val headerView = binding.navigationView.getHeaderView(0)
         headerView.findViewById<TextView>(R.id.name).text = UserProfileDetails.user?.full_name
         headerView.findViewById<TextView>(R.id.email).text = UserProfileDetails.user?.email_id
         headerView.findViewById<TextView>(R.id.phnNum).text = UserProfileDetails.user?.mobile_no
     }
-
     fun showBackButton(){
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setHomeAsUpIndicator(R.drawable.baseline_arrow_back_24)
     }
-
     private fun navToSplash(){
         supportFragmentManager.beginTransaction().replace(R.id.fragment_container, SplashFragment()).commit()
     }
-
-     fun hideNavDrawer(){
+    fun hideNavDrawer(){
          binding.toolbar.navigationIcon = null          // to hide Navigation icon
          supportActionBar?.setDisplayHomeAsUpEnabled(false)
      }
-
     fun showNavDrawer(){
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setHomeAsUpIndicator(R.drawable.baseline_menu_24)
     }
-
     fun onChangeToolbarTitle(title:String){
         binding.tvTitleScreen.text = title
     }
-
     private fun toggleTheme(){
         if(isDarkTheme){
             setTheme(R.style.ThemeLight)
         }
         setTheme(R.style.ThemeDark)
     }
-
     private fun initDatabase(){
         appDatabase = AppDatabase.getAppDatabase(this)
         cartDao = appDatabase.getCartDao()
     }
-
-
-
-
 }
 
 

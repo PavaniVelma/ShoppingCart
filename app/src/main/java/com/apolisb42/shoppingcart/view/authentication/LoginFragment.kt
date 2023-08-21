@@ -19,11 +19,6 @@ class LoginFragment : Fragment() {
 
     private lateinit var binding:FragmentLoginBinding
     private lateinit var loginPresenter: LoginPresenter
-
-   
-
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -63,7 +58,6 @@ class LoginFragment : Fragment() {
                 binding.etPassword.text.toString()
             )
         }
-
         binding.tvNotHaveAccount.setOnClickListener {
             activity
                 ?.supportFragmentManager
@@ -72,15 +66,10 @@ class LoginFragment : Fragment() {
                 ?.addToBackStack(null)
                 ?.commit()
         }
-
     }
 
     override fun onResume() {
         super.onResume()
         (activity as? ShoppingCartActivity)?.onChangeToolbarTitle("LOGIN")
     }
-
-
-
-
 }

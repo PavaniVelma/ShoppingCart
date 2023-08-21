@@ -81,6 +81,4 @@ class CheckoutFragment : Fragment() {
         super.onResume()
         (activity as? ShoppingCartActivity)?.onChangeToolbarTitle("Checkout")
     }
-
-
 }

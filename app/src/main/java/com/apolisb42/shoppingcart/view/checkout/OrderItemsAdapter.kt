@@ -26,7 +26,6 @@ class OrderItemsAdapter(private val orderList: List<Item>): RecyclerView.Adapter
             }
         }
     }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CartItemViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         val binding = ItemCheckoutCartBinding.inflate(layoutInflater, parent, false)

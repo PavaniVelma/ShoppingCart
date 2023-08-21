@@ -1,7 +1,6 @@
 package com.apolisb42.shoppingcart.model.network
 
 class VolleyConstants() {
-
     companion object{
         //http://10.0.2.2:8080/
         const val BASE_URL = "http://192.168.1.155:8080/"
@@ -18,6 +17,5 @@ class VolleyConstants() {
         const val ORDER_DETAILS_URL = "${BASE_URL}myshop/index.php/Order?"
         const val SEARCH_PRODUCT_URL = "${BASE_URL}myshop/index.php/Product/search?"
         const val LIST_ORDERS_URL = "${BASE_URL}myshop/index.php/Order/userOrders/"
-
     }
 }

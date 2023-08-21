@@ -13,14 +13,10 @@ class OrderDetailsPresenter(private val volleyHandler: VolleyHandler, val orderD
                 (response as? OrderDetailsResponse)?.let{
                     orderDetailsView.setSuccess(it)
                 }
-
             }
-
             override fun failure() {
-
                 orderDetailsView.setError()
             }
-
         })
     }
 }

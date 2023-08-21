@@ -15,7 +15,6 @@ class QuantityStepper(context: Context, attrs: AttributeSet):ConstraintLayout(co
     private var quantityStepperListener: QuantityStepperListener? = null
     private val binding: QuantityStepperBinding
     private var quantity = 1
-
     init {
         binding = QuantityStepperBinding.inflate(LayoutInflater.from(getContext()), this)
         with(binding){
@@ -47,7 +46,4 @@ class QuantityStepper(context: Context, attrs: AttributeSet):ConstraintLayout(co
     fun setQuantityStepperListener(quantityStepperListener: QuantityStepperListener){
         this.quantityStepperListener = quantityStepperListener
     }
-
-
-
 }

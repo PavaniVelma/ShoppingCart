@@ -14,13 +14,12 @@ class DeliveryAddressPresenter(private val volleyHandler: VolleyHandler, val del
     override fun getAddressDetails() {
 
         UserProfileDetails.user?.user_id?.let {
-            volleyHandler.getAddressDetails(it,object :ResponseCallback{
+            volleyHandler.getAddressDetails(it, object :ResponseCallback{
                 override fun success(response: Any?) {
                     (response as? UserAddressResponse)?.let {
                         deliveryAddressView.setGetAddressSuccess(it)
                     }
                 }
-
                 override fun failure() {
                     deliveryAddressView.setError()
                 }
@@ -28,22 +27,17 @@ class DeliveryAddressPresenter(private val volleyHandler: VolleyHandler, val del
             })
         }
     }
-
     override fun saveSelectedAddress(address: Addresse) {
         CheckOutDetails.address = address
     }
-
-
     override fun addNewAddress(postAddressRequest: PostAddressRequest) {
         volleyHandler.PostAddressDetails(postAddressRequest, object: ResponseCallback{
             override fun success(response: Any?) {
                 deliveryAddressView.setAddAdressSuccess()
             }
-
             override fun failure() {
                 deliveryAddressView.setError()
             }
-
         })
     }
 }

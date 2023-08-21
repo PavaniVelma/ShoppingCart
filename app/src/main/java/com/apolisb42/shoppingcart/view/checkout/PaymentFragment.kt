@@ -46,12 +46,8 @@ class PaymentFragment : Fragment() {
                 }
             }
         }
-
-
         binding.btnNext.setOnClickListener {
             (parentFragment as CheckoutFragment).moveToNext(3)
         }
     }
-
-
 }

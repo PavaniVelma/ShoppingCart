@@ -15,13 +15,9 @@ class CategoryPresenter(private val volleyHandler: VolleyHandler, val categoryVi
                     categoryView.setSuccess(it)
                 }
             }
-
             override fun failure() {
                 categoryView.setError()
             }
-
         })
     }
-
-
 }

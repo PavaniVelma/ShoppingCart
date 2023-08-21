@@ -22,10 +22,4 @@ class LoginPresenter(private val volleyHandler: VolleyHandler, val loginView: MV
 
          })
     }
-
-    /*
-    val image = catergory.category_image_url -> smartphones.png
-    val url = "http://localhost/myshop/images/$image" ->
-    picasso.get().load(url).into(view)
-    * */
 }

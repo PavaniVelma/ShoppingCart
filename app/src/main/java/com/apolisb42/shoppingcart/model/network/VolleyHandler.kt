@@ -74,12 +74,9 @@ class VolleyHandler(val context: Context) {
             }
         )
         requestQueue.add(stringRequest)
-
-
     }
 
     fun loginUser(emailId:String, password:String,responseCallback: ResponseCallback){
-
         val jsonRequest = JSONObject()
         jsonRequest.put("email_id", emailId)
         jsonRequest.put("password", password)
@@ -89,7 +86,6 @@ class VolleyHandler(val context: Context) {
             VolleyConstants.LOGIN_URL,
             jsonRequest,
         {
-
             if(it.getString("message") == "Login successful"){
                 val typeToken = object:TypeToken<UserResponse>(){}
                 val response = Gson().fromJson(it.toString(),typeToken)
@@ -97,18 +93,13 @@ class VolleyHandler(val context: Context) {
             }else{
                 responseCallback.failure()
             }
-
-
         },{
                 Log.i("logiError",it.message.toString())
         }
         )
         requestQueue.add(stringRequest)
-
     }
-
     fun getCategories(responseCallback: ResponseCallback){
-
         val stringRequest = StringRequest(
             Request.Method.GET,
             VolleyConstants.CATEGORY_URL,
@@ -122,10 +113,8 @@ class VolleyHandler(val context: Context) {
         )
         requestQueue.add(stringRequest)
     }
-
     fun getSubCategories(catId:String,responseCallback: ResponseCallback){
-
-        val queryParams = "category_id=$catId"
+         val queryParams = "category_id=$catId"
         val url = "$SUBCATEGORY__URL$queryParams"
         val stringRequest = StringRequest(
             Request.Method.GET,
@@ -145,8 +134,7 @@ class VolleyHandler(val context: Context) {
         requestQueue.add(stringRequest)
     }
 
-    fun getProducts(subCatId:String,responseCallback: ResponseCallback){
-
+    fun getProducts(subCatId:String, responseCallback: ResponseCallback){
         val url = "$PRODUCT_URL$subCatId"
         val stringRequest = StringRequest(
             Request.Method.GET,
@@ -161,9 +149,7 @@ class VolleyHandler(val context: Context) {
         )
         requestQueue.add(stringRequest)
     }
-
     fun getProductDetails(productId:String,responseCallback: ResponseCallback){
-
         val url = "$PRODUCT_DETAIL_URL$productId"
         val stringRequest = StringRequest(
             Request.Method.GET,
@@ -178,11 +164,8 @@ class VolleyHandler(val context: Context) {
         )
         requestQueue.add(stringRequest)
     }
-
     fun getAddressDetails(userId:String,responseCallback: ResponseCallback){
-
         val url = "$ADDRESS_URL$userId"
-
         val stringRequest = StringRequest(
             Request.Method.GET,
             url,
@@ -198,8 +181,6 @@ class VolleyHandler(val context: Context) {
     }
 
     fun PostAddressDetails(postAddressResponse: PostAddressRequest, responseCallback: ResponseCallback){
-
-
         val params = HashMap<String,String>()
         params.put("user_id",postAddressResponse.user_id.toString())
         params.put("title",postAddressResponse.title)
@@ -263,8 +244,6 @@ class VolleyHandler(val context: Context) {
             }
         )
         requestQueue.add(request)
-
-
     }
 
     fun getOrderDetails(orderId:String, responseCallback: ResponseCallback){
@@ -303,29 +282,20 @@ class VolleyHandler(val context: Context) {
             }
         )
         requestQueue.add(stringRequest)
-
-
     }
 
-    fun listOfOrders(userId:String,responseCallback: ResponseCallback){
-
+    fun listOfOrders(userId:String,responseCallback: ResponseCallback) {
         val stringRequest = StringRequest(
             Request.Method.GET,
-            VolleyConstants.LIST_ORDERS_URL+userId,
+            VolleyConstants.LIST_ORDERS_URL + userId,
             {
-                val typeToken = object:TypeToken<OrdersListResponse>(){}
-                val response = Gson().fromJson(it,typeToken)
+                val typeToken = object : TypeToken<OrdersListResponse>() {}
+                val response = Gson().fromJson(it, typeToken)
                 responseCallback.success(response)
-            },{
+            }, {
                 responseCallback.failure()
             }
         )
         requestQueue.add(stringRequest)
     }
-
-
-
-
-
-
 }

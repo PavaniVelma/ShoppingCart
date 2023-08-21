@@ -26,9 +26,6 @@ class CategoryFragment : Fragment(),ItemClickListener {
     private lateinit var categoryPresenter:CategoryPresenter
     private lateinit var subCategoryFragment: SubCategoryFragment
 
- 
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

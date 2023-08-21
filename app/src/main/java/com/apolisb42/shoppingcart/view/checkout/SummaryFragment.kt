@@ -85,6 +85,4 @@ class SummaryFragment : Fragment() {
         binding.rvCartItemSummary.layoutManager = LinearLayoutManager(requireContext())
         binding.rvCartItemSummary.adapter = adapter
     }
-
-
 }

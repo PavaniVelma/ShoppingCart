@@ -49,7 +49,4 @@ class DeliveryAddressAdapter(private val addressList:List<Addresse>, val isSelec
     override fun onBindViewHolder(holder: AddressViewHolder, position: Int) {
         holder.bind(addressList[position])
     }
-
-
-
 }

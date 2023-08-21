@@ -29,8 +29,6 @@ class DeliveryFragment : Fragment(), AddAddressClickListener, IsSelectedListener
         // Inflate the layout for this fragment
         binding = FragmentDeliveryBinding.inflate(layoutInflater,container, false)
         return binding.root
-
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -38,46 +36,31 @@ class DeliveryFragment : Fragment(), AddAddressClickListener, IsSelectedListener
         presenter = DeliveryAddressPresenter(VolleyHandler.getInstance(requireContext()),object:
             MVPShoppingCart.DeliveryAddressView{
             override fun setError() {
-
             }
-
             override fun setGetAddressSuccess(userAddressResponse: UserAddressResponse) {
-
                 adapter = DeliveryAddressAdapter(userAddressResponse.addresses, this@DeliveryFragment)
-
                 context?.let {
                     binding.rvAddress.layoutManager = LinearLayoutManager(requireContext())
                     binding.rvAddress.adapter = adapter
                 }
-
-
-
             }
-
             override fun setAddAdressSuccess() {
                 presenter.getAddressDetails()
             }
 
         })
-
         binding.btnAddAddress.setOnClickListener {
 
             val bottomSheet = AddAddressFragment(this)
             activity?.supportFragmentManager?.let { it1 ->
                 bottomSheet.show(it1,"Add Address")
             }
-
         }
-
         presenter.getAddressDetails()
-
         binding.btnNext.setOnClickListener {
             (parentFragment as CheckoutFragment).moveToNext(2)
         }
-
-
     }
-
     override fun onAddClicked(title: String, address: String) {
         presenter.addNewAddress(PostAddressRequest(address, title, UserProfileDetails.user?.user_id?.toInt()?:0))
     }
@@ -85,6 +68,4 @@ class DeliveryFragment : Fragment(), AddAddressClickListener, IsSelectedListener
     override fun saveAddress(address: Addresse) {
         presenter.saveSelectedAddress(address)
     }
-
-
 }

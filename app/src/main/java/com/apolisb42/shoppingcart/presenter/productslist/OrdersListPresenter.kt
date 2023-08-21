@@ -18,7 +18,6 @@ MVPShoppingCart.IOrdersListPresenter{
                         ordersListView.setSuccess(it)
                     }
                 }
-
                 override fun failure() {
                     ordersListView.setError()
                 }

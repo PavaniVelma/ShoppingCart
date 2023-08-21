@@ -59,5 +59,4 @@ class CartItemsFragment : Fragment() {
         binding.rvCartItems.layoutManager = LinearLayoutManager(requireContext())
         binding.rvCartItems.adapter = adapter
     }
-
 }

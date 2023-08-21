@@ -69,8 +69,4 @@ class RegisterFragment : Fragment() {
         super.onResume()
         (activity as? ShoppingCartActivity)?.onChangeToolbarTitle("REGISTER")
     }
-
-
-
-
 }

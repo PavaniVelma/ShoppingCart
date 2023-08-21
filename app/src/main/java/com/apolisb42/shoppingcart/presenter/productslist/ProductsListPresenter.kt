@@ -10,7 +10,7 @@ import com.apolisb42.shoppingcart.presenter.MVPShoppingCart
 class ProductsListPresenter(private val volleyHandler: VolleyHandler, val cartDao: CartDao, val productsView: MVPShoppingCart.ProductView)
     : MVPShoppingCart.IProductListPresenter{
     override fun getProducts(subCatId: String) {
-        volleyHandler.getProducts(subCatId,object:ResponseCallback{
+        volleyHandler.getProducts(subCatId, object:ResponseCallback{
 
             override fun success(response: Any?) {
                 (response as? ProductListResponse)?.let {
@@ -24,7 +24,6 @@ class ProductsListPresenter(private val volleyHandler: VolleyHandler, val cartDa
 
         })
     }
-
     override fun getCartItems(): List<CartItem> {
         return cartDao.fetchProduct()
     }

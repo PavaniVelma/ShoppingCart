@@ -31,7 +31,6 @@ class SearchResultFragment : Fragment(),ItemClickListener{
         binding = FragmentSearchResultBinding.inflate(layoutInflater,container, false)
         return binding.root
     }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         (activity as? ShoppingCartActivity)?.showBackButton()
@@ -49,13 +48,11 @@ class SearchResultFragment : Fragment(),ItemClickListener{
             }
 
         })
-
         query?.let{
             presenter.getSearchResult(it)
         }
 
     }
-
     override fun isSelected(id: String) {
         productDetailsFragment = ProductDetailsFragment()
         val bundle = Bundle()

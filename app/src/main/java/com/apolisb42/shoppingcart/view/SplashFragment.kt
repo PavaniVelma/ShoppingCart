@@ -31,19 +31,14 @@ class SplashFragment : Fragment() {
         binding = FragmentSplashBinding.inflate(layoutInflater)
         return binding.root
     }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initSplash()
         (activity as? ShoppingCartActivity)?.hideNavDrawer()
         (activity as? ShoppingCartActivity)?.supportActionBar?.hide()
     }
-
     private fun initSplash(){
-
         Handler(Looper.getMainLooper()).postDelayed({
-
-
             if(activity?.getBooleanInSharedPreferences(key = "firstTime", value = false) == true){
                 val emailId = activity?.getStringFromSharedPreferences("email")
                 val passWord = activity?.getStringFromSharedPreferences("password")
@@ -53,7 +48,6 @@ class SplashFragment : Fragment() {
                             (activity as? ShoppingCartActivity)?.addHeaderDetails()
                             activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.fragment_container, CategoryFragment())?.commit()
                         }
-
                         override fun setError() {
                             activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.fragment_container, LoginFragment())?.commit()
                         }
@@ -72,9 +66,7 @@ class SplashFragment : Fragment() {
 
         }, 1000)
     }
-
     private fun navToIntroScreen(){
         activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.fragment_container, IntroScreenFragment())?.commit()
     }
-
 }

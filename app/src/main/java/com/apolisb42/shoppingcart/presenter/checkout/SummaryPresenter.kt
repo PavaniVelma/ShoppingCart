@@ -13,7 +13,6 @@ class SummaryPresenter (private val volleyHandler: VolleyHandler, private val ca
     override fun getCartItems(): List<CartItem> {
         return cartDao.fetchProduct()
     }
-
     override fun getSelectedAddress(): Addresse? {
         return CheckOutDetails.address
     }
@@ -21,7 +20,6 @@ class SummaryPresenter (private val volleyHandler: VolleyHandler, private val ca
     override fun getSelectedPayment(): String? {
         return CheckOutDetails.paymentOption
     }
-
     override fun placeOrder() {
         UserProfileDetails.user?.let {
             volleyHandler.PostPlaceOrder(it.user_id,cartDao, object :ResponseCallback{

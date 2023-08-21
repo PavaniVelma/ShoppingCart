@@ -34,13 +34,9 @@ class ProductListFragment : Fragment(), ItemClickListener {
     private lateinit var appDatabase: AppDatabase
     private lateinit var cartDao: CartDao
 
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         subCategoryId = arguments?.getString("sub_category_id")
-
-
     }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -50,7 +46,6 @@ class ProductListFragment : Fragment(), ItemClickListener {
         binding = FragmentProductListBinding.inflate(layoutInflater,container, false)
         return binding.root
     }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initDb()
@@ -59,9 +54,7 @@ class ProductListFragment : Fragment(), ItemClickListener {
         (activity as? ShoppingCartActivity)?.showBackButton()
         productsListPresenter = ProductsListPresenter(VolleyHandler.getInstance(requireContext()), cartDao,object:MVPShoppingCart.ProductView{
             override fun setError() {
-
             }
-
             override fun setSuccess(productListResponse: ProductListResponse) {
                 adapter = ProductsAdapter(productListResponse.products,this@ProductListFragment)
                 binding.rvProducts.layoutManager = LinearLayoutManager(requireContext())
@@ -109,6 +102,5 @@ class ProductListFragment : Fragment(), ItemClickListener {
         }
 
     }
-
 
 }

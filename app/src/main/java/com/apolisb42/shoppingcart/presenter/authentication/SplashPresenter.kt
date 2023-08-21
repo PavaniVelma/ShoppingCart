@@ -14,14 +14,10 @@ class SplashPresenter(private val volleyHandler: VolleyHandler, val splashView: 
                     UserProfileDetails.user = it.user
                     splashView.setSuccess()
                 }
-
             }
-
             override fun failure() {
                 splashView.setError()
             }
-
         })
     }
-
 }

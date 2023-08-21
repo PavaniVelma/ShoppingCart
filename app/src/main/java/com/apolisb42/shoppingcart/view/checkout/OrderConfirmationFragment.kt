@@ -65,9 +65,4 @@ class OrderConfirmationFragment : Fragment() {
         super.onResume()
         (activity as? ShoppingCartActivity)?.onChangeToolbarTitle("ORDER CONFIRMED")
     }
-
-
-
-
-
 }

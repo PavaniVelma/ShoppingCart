@@ -79,6 +79,4 @@ class CartFragment : Fragment(),ItemClickListener {
         productDetailsFragment.arguments = bundle
         activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.fragment_container,productDetailsFragment)?.addToBackStack(null)?.commit()
     }
-
-
 }
