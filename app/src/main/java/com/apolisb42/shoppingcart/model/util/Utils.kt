@@ -17,6 +17,10 @@ fun Context.getStringFromSharedPreferences(key:String):String{
     return  getSharedPreference().getString(key, "") ?: ""
 }
 
+fun Context.deleteStringFromSharedPreferences(key:String){
+    getSharedPreference().edit().remove(key).apply()
+}
+
 fun Context.putBooleanInSharedPreferences(key:String,value:Boolean){
     getSharedPreference().edit().putBoolean(key, value).apply()
 }

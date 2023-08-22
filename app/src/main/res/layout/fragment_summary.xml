@@ -1,14 +1,158 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:fillViewport="true"
     tools:context=".view.checkout.SummaryFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_16dp"
+        android:padding="@dimen/_8dp"
+        android:layout_marginTop="@dimen/_16dp"
+        >
 
-</FrameLayout>
+        <TextView
+            android:id="@+id/tv_cartItems"
+            android:text="@string/cart_items"
+            android:textColor="@color/black"
+            style="@style/TextAppearance.AppCompat.Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_cartItemSummary"
+            android:layout_marginTop="@dimen/_8dp"
+            tools:itemCount="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:listitem="@layout/item_checkout_cart"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_cartItems"/>
+
+        <TextView
+            android:id="@+id/tv_total_bill_amount"
+            android:text="@string/total_bill_amount"
+            android:textColor="@color/black"
+            android:layout_marginTop="@dimen/_16dp"
+            style="@style/TextAppearance.AppCompat.Large"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rv_cartItemSummary"
+            />
+
+        <TextView
+            android:id="@+id/tv_totalPriceSummary"
+            android:text="@string/price"
+            android:layout_marginTop="@dimen/_16dp"
+            style="@style/TextAppearance.AppCompat.Large"
+            android:textColor="@color/orange"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rv_cartItemSummary"
+            />
+
+        <TextView
+            android:id="@+id/tv_DeliveryAddress"
+            android:text="@string/delivery_address"
+            android:textColor="@color/black"
+            android:layout_marginTop="@dimen/_16dp"
+            style="@style/TextAppearance.AppCompat.Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_total_bill_amount"
+            />
+        <LinearLayout
+            android:id="@+id/linear_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_16dp"
+            android:paddingVertical="@dimen/_8dp"
+            android:orientation="vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_DeliveryAddress"
+            android:background="@drawable/rectangle_shape"
+            >
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_addressTitleSummary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="@dimen/_8dp"
+                android:text="@string/home"
+                android:textColor="@color/black"
+                android:layout_marginTop="@dimen/_8dp"
+                style="@style/TextAppearance.AppCompat.Medium"
+               />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_address_body_Summary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="@dimen/_8dp"
+                android:text="@string/virginia_herndon"
+                android:textColor="@color/black"
+                android:layout_marginTop="@dimen/_8dp"
+                style="@style/TextAppearance.AppCompat.Small"
+                />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_paymentOption"
+            android:text="@string/payment_option"
+
+            android:textColor="#505253"
+            android:layout_marginTop="@dimen/_16dp"
+            style="@style/TextAppearance.AppCompat.Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/linear_layout"
+            />
+
+        <TextView
+            android:id="@+id/tv_paymentOptionMode"
+            android:text="@string/payment_option"
+
+            android:textColor="@color/black"
+            android:layout_marginTop="@dimen/_16dp"
+            style="@style/TextAppearance.AppCompat.Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_16dp"
+            app:layout_constraintStart_toEndOf="@id/tv_paymentOption"
+            app:layout_constraintTop_toBottomOf="@id/linear_layout"
+            />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_confirmPlaceOrder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="@string/confirm_and_place_order"
+            android:layout_marginBottom="@dimen/_16dp"
+            android:layout_marginHorizontal="@dimen/_16dp"
+            app:layout_constraintVertical_bias="1"
+            android:textColor="@color/white"
+            style="@style/TextAppearance.AppCompat.Medium"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_paymentOptionMode"
+            android:layout_marginTop="@dimen/_24dp"
+            android:background="@drawable/button_bg"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

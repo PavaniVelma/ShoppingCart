@@ -6,7 +6,6 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.apolisb42.shoppingcart.model.cart.CartItem
 import com.apolisb42.shoppingcart.model.database.DatabaseConstants.DATABASE_NAME
-import com.apolisb42.shoppingcart.model.productdetailsmodel.Product
 
 @Database(entities = [CartItem::class], version = 1, exportSchema = false)
 abstract class AppDatabase():RoomDatabase() {
@@ -24,7 +23,6 @@ abstract class AppDatabase():RoomDatabase() {
      ).allowMainThreadQueries().build()
    }
    return INSTANCE as AppDatabase
-
   }
  }
 }

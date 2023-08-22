@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fillViewport="true"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".view.ProductDetails.ProductDetailsFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_24dp">
+        android:layout_marginHorizontal="@dimen/_16dp"
+        android:layout_marginVertical="@dimen/_16dp">
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/productD_name"
@@ -38,13 +40,15 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/productD_name"
             android:text="@string/description"
+            android:textColor="@color/black"
             android:layout_marginTop="@dimen/_8dp"
             style="@style/TextAppearance.AppCompat.Medium"
             />
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/viewPagerImage"
             android:layout_width="match_parent"
-            android:layout_height="300dp"
+            android:layout_height="@dimen/_300dp"
+            android:layout_marginTop="@dimen/_16dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/productD_description"
             app:layout_constraintEnd_toEndOf="parent"/>
@@ -55,7 +59,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             android:text="@string/price"
-            android:layout_marginTop="@dimen/_8dp"
+            android:layout_marginTop="@dimen/_16dp"
             style="@style/TextAppearance.AppCompat.Large"
             android:textColor="@color/orange"
             app:layout_constraintTop_toBottomOf="@id/viewPagerImage"/>
@@ -67,7 +71,7 @@
             android:layout_height="wrap_content"
             android:text="@string/add_to_cart"
             android:textColor="@color/blue"
-            android:layout_marginTop="@dimen/_8dp"
+            android:layout_marginTop="@dimen/_16dp"
             app:layout_constraintHorizontal_bias="1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/productD_price"
@@ -86,53 +90,64 @@
             app:layout_constraintTop_toBottomOf="@id/viewPagerImage"
             />
 
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            app:layout_constraintTop_toBottomOf="@id/productD_price"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="@dimen/_16dp"
+            android:background="@color/light_grey"
+            />
+
+
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/text_specification"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             android:text="@string/specifications"
+            android:textColor="@color/black"
             android:layout_marginTop="@dimen/_8dp"
             style="@style/TextAppearance.AppCompat.Large"
-            app:layout_constraintTop_toBottomOf="@id/productD_price"/>
-
-        <LinearLayout
-            android:id="@+id/specification_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="@dimen/_8dp"
-            app:layout_constraintTop_toBottomOf="@id/text_specification">
+            app:layout_constraintTop_toBottomOf="@id/divider"/>
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_specifications"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:nestedScrollingEnabled="true"
-                android:overScrollMode="never" />
-        </LinearLayout>
+                android:background="@drawable/rectangle_shape"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:itemCount="0"
+                android:layout_marginTop="@dimen/_8dp"
+                app:layout_constraintTop_toBottomOf="@id/text_specification"/>
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/text_reviews"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             android:text="@string/UserReviews"
+            android:textColor="@color/black"
             android:layout_marginTop="@dimen/_8dp"
             style="@style/TextAppearance.AppCompat.Large"
-            app:layout_constraintTop_toBottomOf="@id/specification_layout"/>
+            app:layout_constraintTop_toBottomOf="@id/rv_specifications"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_reviews"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:nestedScrollingEnabled="false"
+            tools:itemCount="1"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:listitem="@layout/item_reviews"
             android:layout_marginTop="@dimen/_8dp"
-            app:layout_constraintTop_toBottomOf="@id/text_reviews"/>
-
-
+            android:layout_marginBottom="@dimen/_16dp"
+            app:layout_constraintTop_toBottomOf="@id/text_reviews"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 
-</androidx.core.widget.NestedScrollView>
+</ScrollView>

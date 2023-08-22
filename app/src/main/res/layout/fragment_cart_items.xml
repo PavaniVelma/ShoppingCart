@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginTop="@dimen/_16dp"
+    android:padding="@dimen/_8dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".view.checkout.CartItemsFragment">
 
@@ -10,7 +12,8 @@
         android:id = "@+id/tv_totalBillAmount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Total Bill Amount"
+        android:text="@string/total_bill_amount"
+        android:textColor="@color/black"
         style="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
@@ -18,7 +21,7 @@
         android:id="@+id/tv_totalPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="640"
+        android:text="@string/_640"
         android:textColor="@color/orange"
         style="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintTop_toTopOf="parent"
@@ -27,18 +30,20 @@
         android:id="@+id/rv_cartItems"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_totalPrice"
         app:layout_constraintEnd_toEndOf="parent"/>
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_checkout"
-        android:text="NEXT"
+        android:id="@+id/btn_next"
+        android:text="@string/next"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:textColor="@color/white"
-        android:backgroundTint="@color/blue"
+        style="@style/PrimaryButton"
+        android:background="@drawable/button_bg"
+        android:layout_marginBottom="@dimen/_16dp"
         app:layout_constraintEnd_toEndOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

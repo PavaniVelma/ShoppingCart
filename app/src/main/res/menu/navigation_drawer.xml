@@ -2,6 +2,15 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <group android:checkableBehavior="single">
+
+        <item
+            android:title="@string/night_theme"
+            android:id="@+id/nightTheme"/>
+
+        <item
+            android:title="@string/light_theme"
+            android:id="@+id/dayTheme"/>
+
         <item
             android:title="@string/home"
             android:id="@+id/home"/>

@@ -1,19 +1,19 @@
 package com.apolisb42.shoppingcart.view.ProductDetails
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
+import androidx.fragment.app.Fragment
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.apolisb42.shoppingcart.R
 import com.apolisb42.shoppingcart.databinding.FragmentProductDetailsBinding
 import com.apolisb42.shoppingcart.model.cart.CartItem
 import com.apolisb42.shoppingcart.model.database.AppDatabase
 import com.apolisb42.shoppingcart.model.database.CartDao
-import com.apolisb42.shoppingcart.model.network.VolleyConstants
 import com.apolisb42.shoppingcart.model.network.VolleyHandler
 import com.apolisb42.shoppingcart.model.productdetailsmodel.Product
 import com.apolisb42.shoppingcart.model.productdetailsmodel.ProductDescriptionResponse
@@ -21,7 +21,6 @@ import com.apolisb42.shoppingcart.presenter.MVPShoppingCart
 import com.apolisb42.shoppingcart.presenter.productslist.ProductDetailsPresenter
 import com.apolisb42.shoppingcart.view.QuantityStepperListener
 import com.apolisb42.shoppingcart.view.ShoppingCartActivity
-import com.squareup.picasso.Picasso
 
 
 class ProductDetailsFragment : Fragment() {
@@ -41,7 +40,7 @@ class ProductDetailsFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         binding = FragmentProductDetailsBinding.inflate(inflater,container, false)
         return binding.root
@@ -50,10 +49,11 @@ class ProductDetailsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         (activity as? ShoppingCartActivity)?.showBackButton()
+        val localBroadcastManager = LocalBroadcastManager.getInstance(requireContext())
+        val intent = Intent("Quantity_Update")
         initDB()
-        presenter = ProductDetailsPresenter(VolleyHandler(requireContext()), cartDao,object:MVPShoppingCart.ProductDetailsView{
+        presenter = ProductDetailsPresenter(VolleyHandler.getInstance(requireContext()), cartDao,object:MVPShoppingCart.ProductDetailsView{
             override fun setError() {
-                TODO("Not yet implemented")
             }
 
             @SuppressLint("SetTextI18n")
@@ -85,6 +85,7 @@ class ProductDetailsFragment : Fragment() {
                 binding.quantityStepper.setQuantityStepperListener(object : QuantityStepperListener{
                     override fun onQuantityChanged(quantity: Int) {
                         with(productDescriptionResponse.product){
+                            localBroadcastManager.sendBroadcast(intent)
                             addToCart(this, quantity)
                         }
 
@@ -100,6 +101,7 @@ class ProductDetailsFragment : Fragment() {
                                 description = description
 
                             )
+                            localBroadcastManager.sendBroadcast(intent)
                             presenter.deleteItemInCart(cartItem)
                         }
                         binding.addToCart.isVisible = true

@@ -1,14 +1,13 @@
 package com.apolisb42.shoppingcart.view.authentication
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.apolisb42.shoppingcart.R
 import com.apolisb42.shoppingcart.databinding.FragmentLoginBinding
 import com.apolisb42.shoppingcart.model.network.VolleyHandler
-import com.apolisb42.shoppingcart.model.util.PreferencesHandler
 import com.apolisb42.shoppingcart.model.util.putStringInSharedPreference
 import com.apolisb42.shoppingcart.presenter.MVPShoppingCart
 import com.apolisb42.shoppingcart.presenter.authentication.LoginPresenter
@@ -20,13 +19,6 @@ class LoginFragment : Fragment() {
 
     private lateinit var binding:FragmentLoginBinding
     private lateinit var loginPresenter: LoginPresenter
-
-    companion object{
-        const val TAG = "LOGIN"
-    }
-
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -35,7 +27,7 @@ class LoginFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         binding = FragmentLoginBinding.inflate(layoutInflater, container, false)
         return binding.root
@@ -47,13 +39,14 @@ class LoginFragment : Fragment() {
         (activity as? ShoppingCartActivity)?.supportActionBar?.show()
 
 
-        loginPresenter = LoginPresenter(VolleyHandler(requireContext()), object:MVPShoppingCart.LoginView{
+        loginPresenter = LoginPresenter(VolleyHandler.getInstance(requireContext()), object:MVPShoppingCart.LoginView{
             override fun setError() {
 
 
             }
 
             override fun setSuccess() {
+                (activity as? ShoppingCartActivity)?.addHeaderDetails()
                 activity?.putStringInSharedPreference("email",binding.etEmail.text.toString())
                 activity?.putStringInSharedPreference("password", binding.etPassword.text.toString())
                 activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.fragment_container,CategoryFragment())?.commit()
@@ -65,7 +58,6 @@ class LoginFragment : Fragment() {
                 binding.etPassword.text.toString()
             )
         }
-
         binding.tvNotHaveAccount.setOnClickListener {
             activity
                 ?.supportFragmentManager
@@ -74,15 +66,10 @@ class LoginFragment : Fragment() {
                 ?.addToBackStack(null)
                 ?.commit()
         }
-
     }
 
     override fun onResume() {
         super.onResume()
         (activity as? ShoppingCartActivity)?.onChangeToolbarTitle("LOGIN")
     }
-
-
-
-
 }

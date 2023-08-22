@@ -13,7 +13,7 @@
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
-            android:background="#03A9F4"
+            android:background="@color/blue"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -22,9 +22,10 @@
                 android:layout_height="wrap_content">
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tv_titleScreen"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/super_cart"
+                    android:textAlignment="center"
                     android:textColor="@color/white"
                     style="@style/TextAppearance.AppCompat.Large"
                     app:layout_constraintStart_toStartOf="parent"

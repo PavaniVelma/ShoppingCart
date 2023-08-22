@@ -8,7 +8,5 @@ class ViewPageAdapter(private val fragments:List<Fragment>, fragmentActivity:Fra
     :FragmentStateAdapter(fragmentActivity)
 {
     override fun getItemCount() = fragments.size
-
     override fun createFragment(position: Int) = fragments[position]
-
 }

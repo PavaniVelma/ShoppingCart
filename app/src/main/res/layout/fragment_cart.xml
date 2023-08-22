@@ -41,7 +41,7 @@
                 android:gravity="center"
                 android:text="@string/get_your_order"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_25dp" />
+                android:textSize="@dimen/_25sp" />
 
 
             <androidx.appcompat.widget.AppCompatButton
@@ -50,7 +50,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/button_bg"
-                android:text="GET STARTED"
+                android:text="@string/get_started"
                 style="@style/PrimaryButton"
                 android:textAlignment="center"
                 android:layout_gravity="center_horizontal"/>

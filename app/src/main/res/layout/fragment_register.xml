@@ -14,7 +14,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_20dp"
         android:text="@string/full_name"
-        android:textSize="20sp"/>
+        android:textColor="@color/black"
+        android:textSize="@dimen/_20sp"/>
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
@@ -34,7 +35,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_20dp"
         android:text="@string/mobile_no"
-        android:textSize="20sp"/>
+        android:textColor="@color/black"
+        android:textSize="@dimen/_20sp"/>
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
@@ -45,6 +47,7 @@
             android:id="@+id/et_mobileNum"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="phone"
             android:hint="@string/enter_mobile_number"/>
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -54,7 +57,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_20dp"
         android:text="@string/email_id"
-        android:textSize="20sp"/>
+        android:textColor="@color/black"
+        android:textSize="@dimen/_20sp"/>
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
@@ -65,6 +69,7 @@
             android:id="@+id/et_emil"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
             android:hint="@string/enter_email"/>
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -74,7 +79,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_20dp"
         android:text="@string/password"
-        android:textSize="20sp"/>
+        android:textColor="@color/black"
+        android:textSize="@dimen/_20sp"/>
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
@@ -85,6 +91,7 @@
             android:id="@+id/et_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="textPassword"
             android:hint="@string/enter_password"/>
     </com.google.android.material.textfield.TextInputLayout>
 

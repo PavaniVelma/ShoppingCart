@@ -1,7 +1,6 @@
 package com.apolisb42.shoppingcart.model.database
 
 import androidx.room.Dao
-import androidx.room.Database
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
@@ -26,4 +25,7 @@ interface CartDao {
 
     @Delete
     fun deleteProduct(cartItem: CartItem)
+
+    @Query("DELETE FROM CartItem")
+    fun deleteCart()
 }

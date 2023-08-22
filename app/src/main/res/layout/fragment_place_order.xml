@@ -41,8 +41,9 @@
                 android:fontFamily="sans-serif-black"
                 android:gravity="center"
                 android:text="@string/purchase_online"
+
                 android:textColor="@color/black"
-                android:textSize="@dimen/_25dp" />
+                android:textSize="@dimen/_25sp" />
 
 
         </LinearLayout>
